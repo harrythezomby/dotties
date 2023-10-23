@@ -1,0 +1,489 @@
+label {
+    font-weight: 600;
+    font-family: 'Iosevka Nerd Font';
+    font-size: 15px;
+    padding-bottom: 0px;
+}
+
+.battery {
+    padding: 0 6px;
+    margin-right: 10px;
+    background-color: #caffbf;
+    color: black;
+}
+
+.backlight {
+    padding: 0 6px;
+    margin-right: 10px;
+    background-color: #9bf6ff;
+    color: black;
+}
+
+.kernel {
+    padding: 0 6px;
+    margin-right: 10px;
+    background-color: #a0c4ff;
+    color: black;
+}
+
+.bar {
+    background-color: transparent;
+}
+
+window > box {
+    margin-top: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.power {
+    padding: 0 10px;
+    padding-right: 14px;
+    margin-right: 10px;
+    border-radius: 50px;
+    color: white;
+    background-color: #fe218b;
+    text-shadow: 0 0 3px black;
+}
+
+.apps {
+    padding: 0 10px;
+    padding-right: 14px;
+    margin-right: 10px;
+    border-radius: 50px;
+    color: white;
+    background-color: #fed700;
+    text-shadow: 0 0 3px black;
+}
+
+.vm {
+    padding: 0 10px;
+    padding-right: 14px;
+    margin-right: 10px;
+    border-radius: 50px;
+    background-color: #21b0fe;
+    color: white;
+    text-shadow: 0 0 3px black;
+}
+
+.power:hover,
+.apps:hover,
+.notibutton:hover,
+.vm:hover {
+    min-width: 50px;
+    min-height: 10px;
+    text-shadow: 0 0 10px black;
+    border: 2px solid aqua;
+}
+
+.power:active,
+.apps:active,
+.vm:active {
+    min-width: 75px;
+    text-shadow: 0 0 10px black;
+    border: 2px solid aqua;
+}
+
+.workspaces button {
+    min-height: 5px;
+    padding: 0 3px;
+    margin-left: 3px;
+    border-radius: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: transparent;
+}
+
+.workspaces button:hover {
+    background-color: rgba(0, 0, 0, 0.75);
+    min-width: 40px;
+}
+
+.workspaces button:active {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.workspaces button.focused {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.70);
+    border: 2px solid aqua;
+    min-width: 50px;
+}
+
+.workspacebackground {
+    background-color: transparent;
+}
+
+.media {
+    padding: 0 6px;
+    border-radius: 5px;
+    background-color: rgb(49, 49, 49);
+    color: #eee;
+}
+
+.mediabtn {
+    padding: 15 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color: rgb(49, 49, 49);
+    color: #eee;
+}
+
+.client-title {
+    margin-left: 1em;
+    padding: 0 15px;
+    border-radius: 10px;
+    color: white;
+    text-shadow: 0 0 3px black;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.notification image {
+    color: white;
+    margin-left: 1em;
+}
+
+.volume {
+    padding: 0 6px;
+    margin-right: 10px;
+    background-color: #ffadad;
+    color: black;
+    
+}
+
+.network {
+    padding: 0 6px;
+    margin-right: 10px;
+    background-color: #ffd6a5;
+    color: black;
+}
+
+.bluetooth {
+    padding: 0 6px;
+    margin-right: 10px;
+    background-color: #fdffb6;
+    color: black;
+}
+
+.clock {
+    padding: 0 6px;
+    margin-right: 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: #bdb2ff;
+    color: black;
+}
+
+.ram {
+    padding: 0 6px;
+    margin-left: 15px;
+    border-radius: 5px;
+    color: white;
+    background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
+    text-shadow: 0 0 3px black;
+}
+
+.cpu {
+    padding: 0 6px;
+    margin-left: 15px;
+    border-radius: 5px;
+    color: white;
+    background: linear-gradient(to right, #00c6fb 0%, #005bea 100%);
+    text-shadow: 0 0 3px black;
+}
+
+.temp {
+    padding: 0 6px;
+    margin-left: 15px;
+    border-radius: 5px;
+    color: white;
+    background-image: linear-gradient(to right, #00a7de 0%, #fc00ff 100%);
+    text-shadow: 0 0 3px black;
+}
+
+.fan {
+    padding: 0 6px;
+    margin-left: 15px;
+    border-radius: 5px;
+    color: white;
+    background-image: linear-gradient(to right, #cc208e 0%, #6713d2 100%);
+    text-shadow: 0 0 3px black;
+}
+
+progress, highlight {
+    background-color: aqua;
+    min-height: 8px;
+}
+
+.applauncherclose {
+    padding: 0px;
+    margin-left: 100px;
+}
+
+/* Notification Center */
+#popup-window {
+    background-color: transparent;
+    padding: 0px;
+}
+
+#notification-center {
+    background-color: #232323;
+}
+
+#popup-window .notification > * {
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+    padding: 0px;
+    min-width: 500px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+}
+
+#popup-window *,
+#notification-center *{
+    outline: none;
+    color: white;
+}
+
+
+
+.notification > * {
+    margin: 0px;
+    min-width: 0px;
+    min-height: 0px;
+    border-radius: 25px;
+}
+
+.notification .icon {
+    border-radius: 7px;
+    margin-right: 8px;
+    padding: 0px;
+    color: aqua;
+}
+
+.notification .close-button {
+    margin: 10px;
+    padding-left: 0px;
+    padding-right: 14px;
+    min-height: 2.8em;
+    min-width: 2.8em;
+    border-radius: 50px;
+    background-color: transparent;
+}
+
+.tray {
+    margin-right: 10px;
+
+}
+
+.media,
+.mediabtn,
+.notificationButton,
+.notificationcenterclosebutton,
+.action-button,
+.tray button {
+    min-width: 30px;
+    min-height: 30px;
+    margin-right: 10px;
+    border-radius: 100px;
+    background-color: transparent;
+}
+
+.tray button:hover,
+.media:hover,
+.mediabtn:hover,
+.notificationButton:hover,
+.notificationcenterclosebutton:hover,
+.action-button:hover,
+.notification .close-button:hover {
+
+    min-height: 4em;
+    min-width: 4em;
+    border: 3px solid aqua;
+
+}
+
+.notification .title {
+    font-size: 1.1em;
+    padding: 0px;
+}
+
+.notification .description {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.notificationScrollable {
+    min-height: 800px;
+}
+
+.notificationCenterWindow {
+    min-height: 100px;
+}
+
+.list {
+    padding: 1px;
+    margin: 0px;
+    background-color: transparent;
+}
+
+.action-button {
+    margin: 0 4px;
+    padding: 0px;
+}
+
+.action-button:first-child {
+    margin-left: 0;
+}
+
+.action-button:last-child {
+    margin-right: 0;
+}
+
+.action-button:last-child:first-child {
+    margin: 0;
+}
+
+.header {
+    padding: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.placeholder image {
+    font-size: 8em;
+}
+
+.placeholder label {
+    font-size: 1.4em;
+}
+
+.notificationbuttonalert {
+    background-color: transparent;
+    color: black;
+    padding: 0 0px;
+    margin: 0px;
+}
+
+.notificationCenterWindow {
+    background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
+    min-width: 500px;
+/*     border-radius: 5px;
+    border-bottom: solid rgb(50, 50, 50) 5px; */
+}
+
+.notificationCenterWindowOuter {
+    background-color: rgba(0, 0, 0, 0.2);
+    min-width: 500px;
+/*     border-radius: 20px;
+    border: solid rgb(50, 50, 50) 5px; */
+}
+
+.notificationCenterControls {
+    background-color: transparent;
+}
+
+.notibutton {
+    padding: 0 6px;
+    padding-right: 9px;
+    background-color: #ffc6ff;
+    
+}
+
+.notibuttondefaulticon {
+    color: black;
+}
+
+.applauncherwindow {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.801);
+}
+
+.applauncherentries {
+    border-radius: 5px;
+
+    color: rgb(255, 255, 255);
+    background-color: rgb(49, 49, 49);
+}
+
+.applaunchertitles {
+    color: aqua;
+}
+
+.applauncherdescriptions {
+    font-size: 12px;
+}
+
+.applauncherbuttons {
+    border: 2px solid aqua;
+    background-color: rgb(49, 49, 49);
+}
+
+.powermenuWindow {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.801);
+}
+
+.powermenuTitles {
+    color: aqua;
+}
+
+.powermenuButtons {
+    border: 2px solid aqua;
+    background-color: rgb(49, 49, 49);
+}
+
+.powermenuIcons {
+    border: 2px solid aqua;
+    color: black;
+}
+
+.vmWindow {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.801);
+}
+
+.vmTitles {
+    color: aqua;
+}
+
+.vmButtons {
+    border: 2px solid aqua;
+    background-color: rgb(49, 49, 49);
+}
+
+.vmIcons {
+    border: 2px solid aqua;
+    color: black;
+}
+
+.dockbuttons {
+    border-radius: 100px;
+    margin: 20px;
+    padding: 5px;
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    }
+
+.launchernonrunning {
+    background-color: transparent;
+    color: transparent;
+}
+
+.indicator {
+    min-width: 6px;
+    min-height: 6px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 2px;
+}
+
+.single .indicator,
+.nonrunning .indicator {
+    background-color: transparent;
+}
+
+.floating-dock {
+    background-color: transparent;
+    color: transparent;
+}
+
+.box {
+    background-color: transparent;
+}

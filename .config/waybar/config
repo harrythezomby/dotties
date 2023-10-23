@@ -1,0 +1,454 @@
+[
+    {
+        "layer": "top", // Waybar at top layer
+        "output": "DP-2",
+        "position": "top", // Waybar position (top|bottom|left|right)
+        "height": 30, // Waybar height (to be removed for auto height)
+        "width": 2560, // Waybar width
+        "spacing": 8, // Gaps between modules (4px)
+        // Choose the order of the modules
+        "modules-left": ["custom/pmenu", "custom/apps", "custom/updates", "custom/VM", "hyprland/workspaces", "hyprland/submap", "sway/scratchpad", "custom/media"],
+        "modules-center": ["hyprland/window"],
+        "modules-right": ["network", "bluetooth", "pulseaudio", "backlight", "keyboard-state", "battery", "clock", "tray"],
+        //Modules configuration
+
+        "custom/pmenu": {
+            "format": " ",
+            "on-click": "sleep 0.1 && rofi -show p -modi p:rofi-power-menu"
+        },
+
+        "custom/apps": {
+            "format": " ",
+            "on-click": "sleep 0.1 && rofi -show drun -show-icons"
+        },
+
+        "custom/VM": {
+            "format": " ",
+            "on-click": "virt-viewer -c qemu:///system"
+        },
+
+        "custom/updates": {
+            "format": " {icon}",
+            "return-type": "json",
+            "format-icons": {
+                "has-updates": "󱍷",
+                "updated": "󱝍"
+            },
+            "exec-if": "which waybar-module-pacman-updates",
+            "exec": "waybar-module-pacman-updates",
+            "on-click": "kitty yay -Syu"
+        },
+
+        "hyprland/workspaces": {
+            "all-outputs": true,
+            "format": "{name}",
+                "on-scroll-up": "hyprctl dispatch workspace e+1",
+                "on-scroll-down": "hyprctl dispatch workspace e-1",
+                "on-click": "activate"
+            
+            },
+            "persistent-workspaces": {
+                "1": [],
+                "2": [],
+                "3": [],
+                "4": [],
+                "5": []
+        },
+
+        "hyprland/window": {
+            "format": "{}",
+            "max-length": 140,
+            "rewrite": {
+                "(.*) — Mozilla Firefox": "🌎 $1"
+            },
+            "separate-outputs": true
+        },
+
+        "hyprland/submap": {
+            "format": "✌️ {}",
+            "max-length": 8,
+            "tooltip": false
+        },
+        "sway/scratchpad": {
+            "format": "{icon} {count}",
+            "show-empty": false,
+            "format-icons": ["", ""],
+            "tooltip": true,
+            "tooltip-format": "{app}: {title}"
+        },
+
+        "tray": {
+            "icon-size": 18,
+            "spacing": 10
+        },
+        "clock": {
+            "format": "  {:%I:%M %p}",
+            "timezone": "Australia/Melbourne",
+            "format-alt": "  {:%A, %B %d, %Y (%R)}",
+            "tooltip-format": "<tt><small>{calendar}</small></tt>",
+            "calendar": {
+                        "mode"          : "month",
+
+                        "mode-mon-col"  : 3,
+                        "weeks-pos"     : "right",
+                        "on-scroll"     : 1,
+                        "on-click-right": "mode",
+                        "format": {
+                                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                                }
+                        },
+            "actions":  {
+                        "on-click-right": "mode",
+                        "on-click-forward": "tz_up",
+                        "on-click-backward": "tz_down",
+                        "on-scroll-up": "shift_up",
+                        "on-scroll-down": "shift_down"
+                        }
+        },
+
+        "memory": {
+            "format": "{}% "
+        },
+        "temperature": {
+            "thermal-zone": 2,
+            "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+            "critical-threshold": 80,
+            "format-critical": "{temperatureC}°C {icon}",
+            "format": "{temperatureC}°C {icon}",
+            "format-icons": ["", "", ""]
+        },
+        "backlight": {
+            "device": "acpi_video1",
+            "format": "{icon} {percent}%",
+            "format-icons": ["", "", "", "", "", "", "", "", ""]
+        },
+
+        "battery": {
+            "interval": 60,
+            "states": {
+                "warning": 20,
+                "critical": 8
+            },
+            "format": "{icon} {capacity}%",
+            "format-charging": " {capacity}%",
+            "format-plugged": "  {capacity}%",
+            "format-alt": "{icon} {time}",
+            "format-icons": ["", "", "", "", ""],
+            "max-length": 25
+        },
+
+        "network": {
+            // "interface": "wlp2*", // (Optional) To force the use of this interface
+            "format-wifi": "  {essid} ({signalStrength}%)",
+            "format-ethernet": "{ipaddr}/{cidr}",
+            "tooltip-format": "{ifname} via {gwaddr}",
+            "format-linked": "{ifname} (No IP)",
+            "format-disconnected": " Disconnected",
+            "format-alt": " {ifname}: {ipaddr}/{cidr}"
+        },
+        "bluetooth": {
+            "format": " {status}",
+            "format-connected": " {device_alias}",
+            "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+            // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+            "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+            "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+            "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+            "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+        },
+
+        "custom/wireguard": {
+            "format": "{}<big> 嬨</big>",
+            "exec": "~/.config/waybar/wireguard-rofi-waybar/wireguard.sh short",
+            "on-click": "rofi -modi 'WireGuard:~/.config/waybar/wireguard-rofi-waybar/wireguard-rofi.sh' -show WireGuard -theme mytheme; pkill -SIGRTMIN+6 waybar",
+            "signal": 6,
+            "interval": 60,
+            "return-type": "json"
+        },
+
+        "pulseaudio": {
+            "scroll-step": 1, // %, can be a float
+	    "on-click": "exec pavucontrol",
+            "format": "{icon} {volume}% {format_source}",
+            "format-bluetooth": "{volume}% {icon} {format_source}",
+            "format-bluetooth-muted": " {icon} {format_source}",
+            "format-muted": " {format_source}",
+            "format-source": "{volume}% ",
+            "format-source-muted": "",
+            "format-icons": {
+                "headphone": "",
+                "hands-free": "",
+                "headset": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "default": ["", "", ""]
+            },
+            "on-click": "pavucontrol"
+        },
+        "custom/media": {
+            "format": "{icon} {}",
+            "escape": true,
+            "return-type": "json",
+            "max-length": 40,
+            "on-click": "playerctl play-pause",
+            "on-click-right": "playerctl stop",
+            "smooth-scrolling-threshold": 10, // This value was tested using a trackpad, it should be lowered if using a mouse.
+            "on-scroll-up": "playerctl next",
+            "on-scroll-down": "playerctl previous",
+            "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources/custom_modules folder
+        }
+    },
+
+    
+
+    {
+        "layer": "top", // Waybar at top layer
+        "output": "DP-2",
+        "position": "bottom", // Waybar position (top|bottom|left|right)
+        "height": 3, // Waybar height (to be removed for auto height)
+        "width": 2560, // Waybar width
+        "spacing": 8, // Gaps between modules (4px)
+        // Choose the order of the modules
+        "modules-left": ["wlr/taskbar"],
+        "modules-center": [],
+        "modules-right": ["mpris", "disk", "memory", "cpu", "temperature", "hyprland/language"],
+        //Modules configuration
+        "custom/media": {
+            "format": "{icon} {}",
+            "escape": true,
+            "return-type": "json",
+            "max-length": 40,
+            "on-click": "playerctl play-pause",
+            "on-click-right": "playerctl stop",
+            "smooth-scrolling-threshold": 10, // This value was tested using a trackpad, it should be lowered if using a mouse.
+            "on-scroll-up": "playerctl next",
+            "on-scroll-down": "playerctl previous",
+            "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources/custom_modules folder
+        },
+
+        "hyprland/language": {
+            "format": "  {}  ",
+            "format-en": "EN",
+            "format-jp": "JP",
+            "keyboard-name": "at-translated-set-2-keyboard"
+        },
+
+
+        "mpris": {
+            "format": "{player_icon} {dynamic}",
+            "format-paused": "{status_icon} <i>{dynamic}</i>",
+            "format-playing": "{status_icon}",
+            "player-icons": {
+                "default": "▶",
+                "mpv": "🎵"
+            },
+            "status-icons": {
+                "paused": "⏸",
+                "stopped": "A"
+            }
+            // "ignored-players": ["firefox"]
+        },
+
+        "mpd": {
+            "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+            "format-disconnected": "Disconnected ",
+            "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+            "unknown-tag": "N/A",
+            "interval": 2,
+            "consume-icons": {
+                "on": " "
+            },
+            "random-icons": {
+                "off": "<span color=\"#f53c3c\"></span> ",
+                "on": " "
+            },
+            "repeat-icons": {
+                "on": " "
+            },
+            "single-icons": {
+                "on": "1 "
+            },
+            "state-icons": {
+                "paused": "",
+                "playing": ""
+            },
+            "tooltip-format": "MPD (connected)",
+            "tooltip-format-disconnected": "MPD (disconnected)"
+        },
+        "idle_inhibitor": {
+            "format": "{icon}",
+            "format-icons": {
+                "activated": "",
+                "deactivated": ""
+            }
+        },
+
+        "memory": {
+            "interval": 30,
+            "format": "  {}% ({used:0.1f}G)",
+            "format-alt": "  {used:0.1f}G/{total:0.1f}G"
+        },
+
+        "disk": {
+            "interval": 30,
+            "format": "  {free}",
+            "format-alt": "  {percentage_free}% free on Linux Partition"
+        },
+
+        "cpu": {
+            "interval": 2,
+            "format": "  {usage}% ({avg_frequency}GHz)",
+            "format-alt": "  {avg_frequency}GHz",
+            "tooltip": false,
+            "max-length": 15
+        },
+
+        "temperature": {
+            // "thermal-zone": 2,
+            // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+            // "critical-threshold": 80,
+            // "format-critical": "{temperatureC}°C ",
+            "format": " {temperatureC}°C"
+        },
+
+        "custom/wireguard": {
+            "format": "{}<big> 嬨</big>",
+            "exec": "~/.config/waybar/wireguard-rofi-waybar/wireguard.sh",
+            "on-click": "rofi -modi 'WireGuard:~/.config/waybar/wireguard-rofi-waybar/wireguard-rofi.sh' -show WireGuard",
+            "interval": 60,
+            "return-type": "json"
+        },
+
+
+
+
+        "wlr/taskbar": {
+	    "all-outputs": true,
+            "sort-by-app-id": true,
+            "format": "  {icon} {short_state} {name}  ",
+            "icon-size": 10,
+            "icon-theme": "Numix-Circle",
+            "tooltip-format": "{title}",
+            "on-click": "activate",
+            "ignore-list": [
+                "Alacritty"
+            ],
+            "app_ids-mapping": {
+                "firefoxdeveloperedition": "firefox-developer-edition"
+            },
+            "rewrite": {
+                "Firefox Web Browser": "Firefox",
+                "Foot Server": "Terminal"
+            }
+        }
+        
+    },
+    
+    {
+        "layer": "top", // Waybar at top layer
+        "output": ["DP-1", "DP-3"],
+        "position": "bottom", // Waybar position (top|bottom|left|right)
+        "height": 20, // Waybar height (to be removed for auto height)
+        "width": 1080, // Waybar width
+        "spacing": 8, // Gaps between modules (4px)
+        // Choose the order of the modules
+        "modules-left": ["custom/apps","hyprland/workspaces" ],
+        "modules-center": ["wlr/taskbar"],
+        "modules-right": ["clock"],
+        //Modules configuration
+
+        "clock": {
+            "format": "  {:%I:%M %p}",
+            "timezone": "Australia/Melbourne",
+            "format-alt": "  {:%A, %B %d, %Y (%R)}",
+            "tooltip-format": "<tt><small>{calendar}</small></tt>",
+            "calendar": {
+                        "mode"          : "month",
+
+                        "mode-mon-col"  : 3,
+                        "weeks-pos"     : "right",
+                        "on-scroll"     : 1,
+                        "on-click-right": "mode",
+                        "format": {
+                                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                                }
+                        },
+            "actions":  {
+                        "on-click-right": "mode",
+                        "on-click-forward": "tz_up",
+                        "on-click-backward": "tz_down",
+                        "on-scroll-up": "shift_up",
+                        "on-scroll-down": "shift_down"
+                        }
+        },
+
+
+        "custom/apps": {
+            "format": " ",
+            "on-click": "sleep 0.1 && rofi -show drun"
+        },
+
+        "hyprland/workspaces": {
+            "all-outputs": true,
+            "format": "{name}",
+                "on-scroll-up": "hyprctl dispatch workspace e+1",
+                "on-scroll-down": "hyprctl dispatch workspace e-1",
+                "on-click": "activate"
+            
+            },
+            "persistent-workspaces": {
+                "1": [],
+                "2": [],
+                "3": [],
+                "4": [],
+                "5": []
+        },
+
+        "wlr/taskbar": {
+	    "all-outputs": true,
+            "sort-by-app-id": true,
+            "format": "  {icon}  ",
+            "icon-size": 50,
+            "icon-theme": "Numix-Circle",
+            "tooltip-format": "{title}",
+            "on-click": "activate"
+        }
+        
+    },
+
+    {
+        "layer": "top", // Waybar at top layer
+        "output": ["DP-1", "DP-3"],
+        "position": "bottom", // Waybar position (top|bottom|left|right)
+        "height": 20, // Waybar height (to be removed for auto height)
+        "width": 1080, // Waybar width
+        "spacing": 8, // Gaps between modules (4px)
+        // Choose the order of the modules
+        "modules-left": [],
+        "modules-center": ["hyprland/window"],
+        "modules-right": [],
+        //Modules configuration
+        "hyprland/window": {
+            "format": "{}",
+            "max-length": 140,
+            "rewrite": {
+                "(.*) — Mozilla Firefox": "🌎 $1"
+            },
+            "separate-outputs": true
+        }
+        
+    }
+
+
+
+
+]
