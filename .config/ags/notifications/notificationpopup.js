@@ -8,7 +8,7 @@ import { execAsync, timeout } from 'resource:///com/github/Aylur/ags/utils.js';
 const NotificationsPopupWindow = () => Widget.Window({
     name: 'popup-window',
     monitor: 1,
-    anchor: ['top'],
+    anchor: ['top', 'right'],
     child: PopupList(),
 });
 

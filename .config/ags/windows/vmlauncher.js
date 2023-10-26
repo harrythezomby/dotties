@@ -16,7 +16,7 @@ const VMMenuItem = item => Widget.Button({
                 size: 42,
             }),
             Widget.Label({
-                className: 'vmTitles',
+                className: 'smalltitle',
                 label: item.label,
             }),
         ],
@@ -51,28 +51,29 @@ export default Widget.Window({
         vertical: true,
         children: [
             Widget.Label({
-                label: 'VM Controls',
+                className: 'smalltitle',
+                label: ' VM Controls',
             }),
             VMMenu({
                 items: [
                     {
-                        label: 'Close',
-                        icon: 'window-close',
+                        label: ' Close',
+                        //icon: 'window-close',
                         onClicked: () =>  App.closeWindow('vmmenu'),
                     },
                     {
-                        label: 'Power On',
-                        icon: 'system-shutdown',
+                        label: '󰐥 Power On',
+                        //icon: 'system-shutdown',
                         onClicked: 'virsh --connect qemu:///system start "win11"',
                     },
                     {
-                        label: 'View',
-                        icon: 'system-reboot',
+                        label: ' View',
+                        //icon: 'system-reboot',
                         onClicked: 'virt-viewer -c qemu:///system "win11"',
                     },
                     {
-                        label: 'Shut Down',
-                        icon: 'go-down',
+                        label: '󰚦 Shut Down',
+                        //icon: 'go-down',
                         onClicked: 'virsh --connect qemu:///system shutdown "win11"',
                     },
         

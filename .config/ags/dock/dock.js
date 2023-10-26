@@ -37,6 +37,7 @@ const Taskbar = () => Widget.Box({
                     icon: app.iconName,
                     tooltipText: app.name,
                     onMiddleClick: () => launchApp(app),
+                    onPrimaryClick: () => Utils.execAsync(`hyprctl dispatch focuswindow address:${client.address}`),
                 });
             }
         }

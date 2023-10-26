@@ -12,9 +12,10 @@ const WINDOW_NAME = 'testing';
 const Date = () => Widget.Box({
     children: [
         Widget.Label({
+            className: 'largetitle',
             connections: [
                 [1000, self => execAsync(['date', '+%a %b %e'])
-                    .then(date => self.label = date).catch(console.error)],
+                    .then(date => self.label = "󰃰 " + date).catch(console.error)],
             ],
         }),
     ]
@@ -24,7 +25,8 @@ const Media = () => Widget.Box({
     vertical: true,
     children: [
         Widget.Label({
-            label: 'Media Controls'
+            className: 'mediumtitle',
+            label: '󰌳 Media Controls'
         }),
         Widget.Button({
             halign: 'center',
@@ -35,6 +37,7 @@ const Media = () => Widget.Box({
             child: Widget.Box({
                 children: [
                     Widget.Label({
+                        className: 'smalltitle',
                         truncate: 'end',
                         //maxWidthChars: 24,
                         wrap: true,
@@ -101,11 +104,14 @@ const SysTray = () => Widget.Box({
 });
 
 const Header = () => Widget.Box({
-    className: 'header',
+    //className: 'header',
     children: [
-        Widget.Label(' '),
+        Widget.Label({
+            label: '󰎟 Notifications',
+            className: 'mediumtitle',
+        }),
+        Widget.Label('               '),
         DNDSwitch(),
-        Widget.Box({ hexpand: false }),
         ClearButton(),
     ],
 });
@@ -139,16 +145,20 @@ const NotificationCenter = () => Widget.Window({
                     Widget.Box({
                         className: "notificationCenterControls",
                         halign: 'center',
+                        //spacing: 350,
+                        vertical: true,
+                        homogeneous: false,
                         children: [
-                            Date(),
-                            Widget.Label(' - System Center '),
                             Widget.Button({
                                 className: 'notificationcenterclosebutton',
+                                hexpand: true,
                                 onClicked: () =>  App.toggleWindow('testing'),
                                 child: Widget.Label({
-                                    label: ''
+                                    className: 'smalltitle',
+                                    label: ' Close'
                                 })
                             }),
+                            Date(),
                         ]
                     }),
                     
@@ -181,5 +191,6 @@ export default NotificationCenter({
     name: WINDOW_NAME,
     popup: true,
     focusable: true,
+    layer: 'overlay',
 
 })

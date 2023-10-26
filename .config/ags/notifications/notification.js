@@ -12,8 +12,8 @@ const NotificationIcon = ({ appEntry, appIcon, image }) => {
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
-                min-width: 78px;
-                min-height: 78px;
+                min-width: 150px;
+                min-height: 150px;
             `,
         });
     }
@@ -75,13 +75,13 @@ export const Notification = n => Widget.EventBox({
                             Widget.Box({
                                 children: [
                                     Widget.Label({
-                                        className: 'title',
-                                        xalign: 100,
+                                        className: 'smalltitle',
+                                        xalign: 'left',
                                         justification: 'left',
                                         hexpand: true,
                                         vexpand: false,
                                         maxWidthChars: 50,
-                                        //truncate: 'end',
+                                        truncate: 'end',
                                         wrap: true,
                                         label: n.summary,
                                         useMarkup: true,
@@ -89,17 +89,17 @@ export const Notification = n => Widget.EventBox({
                                     Widget.Button({
                                         className: 'close-button',
                                         valign: 'start',
-                                        halign: 'center',
+                                        halign: 'left',
                                         child: Widget.Icon('window-close-symbolic'),
                                         onClicked: n.close.bind(n),
                                     }),
                                 ],
                             }),
                             Widget.Label({
-                                className: 'description',
+                                className: 'smallertitle',
                                 hexpand: true,
                                 useMarkup: true,
-                                xalign: 0,
+                                xalign: 'left',
                                 justification: 'left',
                                 label: n.body,
                                 wrap: true,

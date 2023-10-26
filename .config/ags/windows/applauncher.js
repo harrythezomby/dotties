@@ -78,6 +78,7 @@ const Applauncher = ({ width, height, spacing }) => {
 
 
     return Widget.Box({
+        className: 'applaunchersecondwindow',
         vertical: true,
         style: `margin: ${spacing * 2}px;`,
         children: [
@@ -85,13 +86,15 @@ const Applauncher = ({ width, height, spacing }) => {
                 halign: 'center',
                 children: [
                     Widget.Label({
-                        label: 'App Launcher '
+                        className: 'smalltitle',
+                        label: '󰣇 Applications '
                     }),
                     Widget.Button({
                         className: 'applauncherclose',
                         onClicked: () =>  App.closeWindow('applauncher'),
                         child: Widget.Label({
-                            label: '  ',
+                            className: 'smallertitle',
+                            label: ' Close',
                         })
                     }),
             

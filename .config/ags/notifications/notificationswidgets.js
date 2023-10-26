@@ -61,7 +61,10 @@ export const ClearButton = () => Widget.Button({
                         `user-trash-${n.length > 0 ? 'full-' : ''}symbolic`],
                 ],
             }),
-            Widget.Label(' Clear'),
+            Widget.Label({
+                label: 'Clear',
+                className: 'smallertitle',
+            })
         ],
     }),
 });

@@ -17,7 +17,7 @@ const PowerMenuItem = item => Widget.Button({
             }),
             Widget.Label({
                 label: item.label,
-                className: 'powermenuTitles',
+                className: 'smalltitle',
             }),
         ],
     }),
@@ -26,6 +26,7 @@ const PowerMenuItem = item => Widget.Button({
 // widget showing a list of PowerMenuItems
 const PowerMenu = ({ items }) => {
     const list = Widget.Box({
+        
         vertical: true,
         spacing: 12,
     });
@@ -42,7 +43,7 @@ const PowerMenu = ({ items }) => {
 // the window containing the PowerMenu
 export default Widget.Window({
     name: WINDOW_NAME,
-    className: 'powermenuWindow',
+    className: 'powermenuwindow',
     popup: true,
     focusable: true,
     visible: false,
@@ -51,43 +52,44 @@ export default Widget.Window({
         vertical: true,
         children: [
             Widget.Label({
-                label: 'Power Menu'
+                className: 'smalltitle',
+                label: '⏻ Power Menu'
             }),
             PowerMenu({
                 items: [
                     {
-                        label: 'Close',
-                        icon: 'window-close',
+                        label: ' Close',
+                        //icon: 'window-close',
                         onClicked: () =>  App.closeWindow('powermenu'),
                     },
                     {
-                        label: 'Shutdown',
-                        icon: 'system-shutdown',
+                        label: '󰐥 Shutdown',
+                        //icon: 'system-shutdown',
                         onClicked: 'systemctl poweroff',
                     },
                     {
-                        label: 'Restart',
-                        icon: 'system-reboot',
+                        label: ' Restart',
+                        //icon: 'system-reboot',
                         onClicked: 'systemctl reboot',
                     },
                     {
-                        label: 'Suspend',
-                        icon: 'go-down',
+                        label: '󰤄 Suspend',
+                        //icon: 'go-down',
                         onClicked: 'systemctl suspend',
                     },
                     {
-                        label: 'Lock Screen',
-                        icon: 'system-lock-screen',
+                        label: ' Lock Screen',
+                        //icon: 'system-lock-screen',
                         onClicked: 'loginctl lock-session ${XDG_SESSION_ID-}',
                     },
                     {
-                        label: 'Hibernate',
-                        icon: 'media-floppy',
+                        label: ' Hibernate',
+                        //icon: 'media-floppy',
                         onClicked: 'systemctl hibernate',
                     },
                     {
-                        label: 'Log Out',
-                        icon: 'system-log-out',
+                        label: ' Log Out',
+                        //icon: 'system-log-out',
                         onClicked: 'loginctl terminate-session ${XDG_SESSION_ID-}',
                     },
                 ],

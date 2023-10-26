@@ -389,11 +389,18 @@ const kernel = () => Widget.Button({
     }),
 })
 
+const batteryAvailable = ({
+    connections: [
+        [Battery, self => {
+            self.batteryAvailable = (`${Battery.available}`);
+        }]
+    ]
+})
 
 
 const batteryProgress = () => {
-    const batteryAvailable = Battery.available;
-    if (!batteryAvailable) {
+
+    if (batteryAvailable) {
       return Widget.Button({
         className: 'battery',
         child: Widget.Label({
@@ -430,7 +437,6 @@ const batteryProgress = () => {
       })
     });
   };
-
 
 
 const backlight = () => {
