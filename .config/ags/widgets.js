@@ -70,7 +70,7 @@ export const DNDSwitch = () => Widget({
 
 export const PopupList = () => Widget.Box({
     className: 'list',
-    style: 'padding: 1px;', // so it shows up
+    css: 'padding: 1px;', // so it shows up
     vertical: true,
     binds: [['children', Notifications, 'popups',
         popups => popups.map(Notification)]],

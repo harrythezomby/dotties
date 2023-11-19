@@ -26,7 +26,7 @@ export default Widget.Window({
         },
         child: Widget.Box({
             vertical: true,
-            style: 'padding: 1px;',
+            css: 'padding: 1px;',
             children: [
                 Widget.Revealer({
                     transition: 'slide_up',
@@ -36,9 +36,9 @@ export default Widget.Window({
                             const ws = Hyprland.getWorkspace(Hyprland.active.workspace.id);
                             self.revealChild = ws?.windows === 0;
                         };
-                        Utils.connect(Hyprland, self, update, 'client-added');
-                        Utils.connect(Hyprland, self, update, 'client-removed');
-                        Utils.connect(Hyprland.active.workspace, self, update);
+                        //Utils.connect(Hyprland, self, update, 'client-added');
+                        //Utils.connect(Hyprland, self, update, 'client-removed');
+                        //Utils.connect(Hyprland.active.workspace, self, update);
                     },
                 }),
                 Widget.Box({

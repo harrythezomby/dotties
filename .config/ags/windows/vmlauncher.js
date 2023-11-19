@@ -4,6 +4,12 @@ import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 
 const WINDOW_NAME = 'vmmenu';
 
+function sh(cmd) {
+    return function() {
+      Utils.execAsync(['bash', '-c', cmd]);
+    }; 
+  }
+
 // widget representing a power menu item
 const VMMenuItem = item => Widget.Button({
     className: 'vmButtons',
@@ -34,7 +40,7 @@ const VMMenu = ({ items }) => {
 
     return Widget.Box({
         vertical: true,
-        style: `margin: 12px;`,
+        css: `margin: 12px;`,
         child: list,
     });
 };
@@ -64,17 +70,17 @@ export default Widget.Window({
                     {
                         label: '󰐥 Power On',
                         //icon: 'system-shutdown',
-                        onClicked: 'virsh --connect qemu:///system start "win11"',
+                        onClicked: sh('virsh --connect qemu:///system start "win11"'),
                     },
                     {
                         label: ' View',
                         //icon: 'system-reboot',
-                        onClicked: 'virt-viewer -c qemu:///system "win11"',
+                        onClicked: sh('virt-viewer -c qemu:///system "win11"'),
                     },
                     {
                         label: '󰚦 Shut Down',
                         //icon: 'go-down',
-                        onClicked: 'virsh --connect qemu:///system shutdown "win11"',
+                        onClicked: sh('virsh --connect qemu:///system shutdown "win11"'),
                     },
         
                 ],

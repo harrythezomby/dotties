@@ -7,7 +7,7 @@ const NotificationIcon = ({ appEntry, appIcon, image }) => {
             valign: 'start',
             hexpand: false,
             className: 'icon img',
-            style: `
+            css: `
                 background-image: url("${image}");
                 background-size: contain;
                 background-repeat: no-repeat;
@@ -29,7 +29,7 @@ const NotificationIcon = ({ appEntry, appIcon, image }) => {
         valign: 'start',
         hexpand: false,
         className: 'icon',
-        style: `
+        css: `
             min-width: 78px;
             min-height: 78px;
         `,
@@ -76,7 +76,7 @@ export const Notification = n => Widget.EventBox({
                                 children: [
                                     Widget.Label({
                                         className: 'smalltitle',
-                                        xalign: 'left',
+                                        //xalign: 'left',
                                         justification: 'left',
                                         hexpand: true,
                                         vexpand: false,
@@ -99,7 +99,7 @@ export const Notification = n => Widget.EventBox({
                                 className: 'smallertitle',
                                 hexpand: true,
                                 useMarkup: true,
-                                xalign: 'left',
+                                //xalign: 'left',
                                 justification: 'left',
                                 label: n.body,
                                 wrap: true,

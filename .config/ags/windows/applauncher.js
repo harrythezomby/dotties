@@ -27,7 +27,7 @@ const AppItem = app => Widget.Button({
                     Widget.Label({
                         className: 'applaunchertitles',
                         label: app.name,
-                        xalign: 0,
+                        //xalign: 0,
                         valign: 'center',
                         truncate: 'end',
                     }),
@@ -35,7 +35,7 @@ const AppItem = app => Widget.Button({
                         className: 'applauncherdescriptions',
                         label: app.description || '',
                         wrap: true,
-                        xalign: 0,
+                        //xalign: 0,
                         justification: 'left',
                         valign: 'center',
                     }),
@@ -54,7 +54,7 @@ const Applauncher = ({ width, height, spacing }) => {
 
     const entry = Widget.Entry({
         hexpand: true,
-        style: `margin-bottom: ${spacing}px;`,
+        css: `margin-bottom: ${spacing}px;`,
 
         // set some text so onChange works the first time
         text: ' ',
@@ -80,7 +80,7 @@ const Applauncher = ({ width, height, spacing }) => {
     return Widget.Box({
         className: 'applaunchersecondwindow',
         vertical: true,
-        style: `margin: ${spacing * 2}px;`,
+        css: `margin: ${spacing * 2}px;`,
         children: [
             Widget.Box({
                 halign: 'center',
@@ -105,7 +105,7 @@ const Applauncher = ({ width, height, spacing }) => {
             // wrap the list in a scrollable
             Widget.Scrollable({
                 hscroll: 'never',
-                style: `
+                css: `
                     min-width: ${width}px;
                     min-height: ${height}px;
                 `,

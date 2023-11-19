@@ -497,7 +497,7 @@ const Center = () => Widget.Box({
 
 
 const Right = () => Widget.Box({
-    halign: 'end',
+    hpack: 'end',
     children: [
         Volume(),
         networkIndicator(),

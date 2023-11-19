@@ -4,7 +4,7 @@ import Gtk from 'gi://Gtk';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 
 const List = () => Widget.Box({
-    style: 'min-width: 200px;',
+    css: 'min-width: 200px;',
     vertical: true,
     vexpand: true,
     connections: [[Notifications, self => {

@@ -2,7 +2,7 @@ export default {
     dock: {
         iconSize: 56,
         pinnedApps: [
-            'firefox',
+            'google-chrome',
             'discord',
             'spotify',
             'kitty',

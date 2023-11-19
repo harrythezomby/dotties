@@ -4,6 +4,12 @@ import * as Utils from 'resource:///com/github/Aylur/ags/utils.js';
 
 const WINDOW_NAME = 'powermenu';
 
+function sh(cmd) {
+    return function() {
+      Utils.execAsync(['bash', '-c', cmd]);
+    }; 
+  }
+
 // widget representing a power menu item
 const PowerMenuItem = item => Widget.Button({
     className: 'powermenuButtons',
@@ -35,7 +41,7 @@ const PowerMenu = ({ items }) => {
 
     return Widget.Box({
         vertical: true,
-        style: `margin: 12px;`,
+        css: `margin: 12px;`,
         child: list,
     });
 };
@@ -59,38 +65,38 @@ export default Widget.Window({
                 items: [
                     {
                         label: ' Close',
-                        //icon: 'window-close',
+                        icon: 'window-close',
                         onClicked: () =>  App.closeWindow('powermenu'),
                     },
                     {
                         label: '󰐥 Shutdown',
-                        //icon: 'system-shutdown',
-                        onClicked: 'systemctl poweroff',
+                        icon: 'system-shutdown',
+                        onClicked: sh('systemctl poweroff'),
                     },
                     {
                         label: ' Restart',
-                        //icon: 'system-reboot',
-                        onClicked: 'systemctl reboot',
+                        icon: 'system-reboot',
+                        onClicked: sh('systemctl reboot'),
                     },
                     {
                         label: '󰤄 Suspend',
-                        //icon: 'go-down',
-                        onClicked: 'systemctl suspend',
+                        icon: 'go-down',
+                        onClicked: sh('systemctl suspend'),
                     },
                     {
                         label: ' Lock Screen',
-                        //icon: 'system-lock-screen',
-                        onClicked: 'loginctl lock-session ${XDG_SESSION_ID-}',
+                        icon: 'system-lock-screen',
+                        onClicked: sh('loginctl lock-session ${XDG_SESSION_ID-}'),
                     },
                     {
                         label: ' Hibernate',
-                        //icon: 'media-floppy',
-                        onClicked: 'systemctl hibernate',
+                        icon: 'media-floppy',
+                        onClicked: sh('systemctl hibernate'),
                     },
                     {
                         label: ' Log Out',
-                        //icon: 'system-log-out',
-                        onClicked: 'loginctl terminate-session ${XDG_SESSION_ID-}',
+                        icon: 'system-log-out',
+                        onClicked: sh('loginctl terminate-session ${XDG_SESSION_ID-}'),
                     },
                 ],
             }),]
