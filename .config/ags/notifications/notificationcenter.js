@@ -29,7 +29,7 @@ const Media = () => Widget.Box({
             label: '󰌳 Media Controls'
         }),
         Widget.Button({
-            halign: 'center',
+            hpack: 'center',
             className: 'media',
             onPrimaryClick: () => Mpris.getPlayer('')?.playPause(),
             onScrollUp: () => Mpris.getPlayer('')?.next(),
@@ -41,7 +41,7 @@ const Media = () => Widget.Box({
                         truncate: 'end',
                         //maxWidthChars: 24,
                         wrap: true,
-                        halign: 'center',
+                        hpack: 'center',
                         connections: [[Mpris, self => {
                             const mpris = Mpris.getPlayer('');
                             // mpris player can be undefined
@@ -55,7 +55,7 @@ const Media = () => Widget.Box({
             })
         }),
         Widget.Box({
-            halign: 'center',
+            hpack: 'center',
             children: [
                 Widget.Button({
                     className: 'mediabtn',
@@ -92,7 +92,7 @@ const Media = () => Widget.Box({
 
 const SysTray = () => Widget.Box({
     className: 'tray',
-    halign: 'center',
+    hpack: 'center',
     connections: [[SystemTray, self => {
         self.children = SystemTray.items.map(item => Widget.Button({
             child: Widget.Icon({ binds: [['icon', item, 'icon']] }),
@@ -144,7 +144,7 @@ const NotificationCenter = () => Widget.Window({
                 children: [
                     Widget.Box({
                         className: "notificationCenterControls",
-                        halign: 'center',
+                        hpack: 'center',
                         //spacing: 350,
                         vertical: true,
                         homogeneous: false,

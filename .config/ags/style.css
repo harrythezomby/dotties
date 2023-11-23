@@ -509,7 +509,7 @@ progress, highlight {
     min-width: 6px;
     min-height: 6px;
     background-color: aqua;
-    border-radius: 10px;
+    border-radius: 100px;
     margin-bottom: 2px;
 }
 

@@ -17,8 +17,8 @@ const AppButton = ({ icon, ...rest }) => Widget.Button({
             child: Widget.Icon({ icon, size: options.dock.iconSize }),
             overlays: [Widget.Box({
                 className: 'indicator',
-                valign: 'end',
-                halign: 'center',
+                vpack: 'end',
+                hpack: 'center',
             })],
         }),
     }),

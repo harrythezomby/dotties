@@ -65,37 +65,37 @@ export default Widget.Window({
                 items: [
                     {
                         label: ' Close',
-                        icon: 'window-close',
+                        //icon: 'window-close',
                         onClicked: () =>  App.closeWindow('powermenu'),
                     },
                     {
                         label: '󰐥 Shutdown',
-                        icon: 'system-shutdown',
+                        //icon: 'system-shutdown',
                         onClicked: sh('systemctl poweroff'),
                     },
                     {
                         label: ' Restart',
-                        icon: 'system-reboot',
+                        //icon: 'system-reboot',
                         onClicked: sh('systemctl reboot'),
                     },
                     {
                         label: '󰤄 Suspend',
-                        icon: 'go-down',
+                        //icon: 'go-down',
                         onClicked: sh('systemctl suspend'),
                     },
                     {
                         label: ' Lock Screen',
-                        icon: 'system-lock-screen',
+                        //icon: 'system-lock-screen',
                         onClicked: sh('loginctl lock-session ${XDG_SESSION_ID-}'),
                     },
                     {
                         label: ' Hibernate',
-                        icon: 'media-floppy',
+                        //icon: 'media-floppy',
                         onClicked: sh('systemctl hibernate'),
                     },
                     {
                         label: ' Log Out',
-                        icon: 'system-log-out',
+                        //icon: 'system-log-out',
                         onClicked: sh('loginctl terminate-session ${XDG_SESSION_ID-}'),
                     },
                 ],

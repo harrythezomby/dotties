@@ -46,12 +46,12 @@ const VM = () => Widget.Button({
 
 
 const Notification = () => Widget.Button({
-    halign: 'center',
-    valign: 'center',
+    hpack: 'center',
+    vpack: 'center',
     className: 'notibutton',
     onClicked: () =>  App.toggleWindow('testing'),
     child: Widget.Box({
-        halign: 'center',
+        hpack: 'center',
         className: 'notification',
         children: [
             Widget.Icon({
@@ -62,7 +62,7 @@ const Notification = () => Widget.Button({
                 ],
             }),
             Widget.Label({
-                halign: 'center',
+                hpack: 'center',
                 className: 'notibuttondefaulticon',
                 label: '󰒓',
                 connections: [
@@ -115,6 +115,9 @@ const Workspaces = () => Widget.EventBox({
 });
 
 const ClientTitle = () => Widget.Label({
+    maxWidthChars: 60,
+    truncate: 'end',
+    wrap: false,
     className: 'client-title',
     binds: [
       ['label', Hyprland.active.client, 'title', p => p || 'Hyprland | Harija'],
@@ -281,15 +284,15 @@ const ram = Variable('0', {
 
   const ramLabel = () => Widget.Box({
     className: 'ram',
-    halign: 'center',
+    hpack: 'center',
     children: [
         Widget.Label({
             label: "  ",
-            halign: 'center',
+            hpack: 'center',
         }),
         Widget.Label({
             binds: [['label', ram]],
-            halign: 'center',
+            hpack: 'center',
         })
     ]
 })
@@ -316,12 +319,12 @@ const kernelver = Variable('0', {
 
   const cpughzLabel = () => Widget.Label({
     binds: [['label', cpughz]],
-    halign: 'center',
+    hpack: 'center',
   });
 
   const cpuutilLabel = () => Widget.Label({
     binds: [['label', cpuutil]],
-    halign: 'center',
+    hpack: 'center',
   });
 
   const cputempLabel = () => Widget.Label({
@@ -333,28 +336,28 @@ const kernelver = Variable('0', {
   });
 
 const cpuLabel = () => Widget.Box ({
-    halign: 'center',
+    hpack: 'center',
     className: 'cpu',
     children: [
         Widget.Label({
-            halign: 'center',
+            hpack: 'center',
             label: "  "
         }),
         cpuutilLabel({
-            halign: 'center',
+            hpack: 'center',
         }),
         Widget.Label ({
-            halign: 'center',
+            hpack: 'center',
             label: " | "
         }),
         cpughzLabel({
-            halign: 'center',
+            hpack: 'center',
         }),
     ]
 })
 
 const tempLabel = () => Widget.Box({
-    halign: 'center',
+    hpack: 'center',
     className: 'temp',
     children: [
         Widget.Label(" "),
@@ -363,7 +366,7 @@ const tempLabel = () => Widget.Box({
 })
 
 const fanLabel = () => Widget.Box({
-    halign: 'center',
+    hpack: 'center',
     className: 'fan',
     children: [
         Widget.Label("󰈐 "),
@@ -372,15 +375,15 @@ const fanLabel = () => Widget.Box({
 })
 
 const kernelLabel = () => Widget.Label({
-    halign: 'center',
+    hpack: 'center',
     binds: [['label', kernelver]],
   });
 
 const kernel = () => Widget.Button({
     className: 'kernel',
-    halign: 'center',
+    hpack: 'center',
     child: Widget.Box({
-        halign: 'center',
+        hpack: 'center',
         children: [
             Widget.Label(" "),
             kernelLabel(),
@@ -396,47 +399,6 @@ const batteryAvailable = ({
         }]
     ]
 })
-
-
-const batteryProgress = () => {
-
-    if (batteryAvailable) {
-      return Widget.Button({
-        className: 'battery',
-        child: Widget.Label({
-            label: '  PC',
-        })
-      });
-    }
-  
-    return Widget.Button({
-      halign: 'center',
-      className: 'battery',
-      child: Widget.Box({
-        children: [
-          Widget.CircularProgress({
-            halign: 'center',
-            className: 'progress',
-            child: Widget.Icon({
-              binds: [['icon', Battery, 'icon-name']],
-            }),
-            binds: [
-              ['value', Battery, 'percent', p => p > 0 ? p / 100 : 0],
-              ['pc', Battery, 'aaaa', p => p <= 0 ? 'PC' : p],
-              ['className', Battery, 'charging', c => c ? 'charging' : ''],
-            ],
-          }),
-          Widget.Label({
-            halign: 'center',
-            binds: [
-              ['value', Battery, 'percent', p => p > 0 ? p / 100 : 0],
-              ['className', Battery, 'charging', c => c ? 'charging' : ''],            ],
-            label: `${Battery.percent}%`
-          })
-        ]
-      })
-    });
-  };
 
 
 const backlight = () => {
@@ -471,6 +433,94 @@ const backlight = () => {
     })
 }
 
+// For Laptop
+
+const batteryProgress = () => {
+    const batteryAvailable = Battery.available;
+    if (batteryAvailable) {
+      return Widget.Button({
+        className: 'battery',
+        child: Widget.Label({
+            label: '  PC',
+        })
+      });
+    }
+  
+    return Widget.Button({
+    className: 'battery',
+      hpack: 'center',
+      connections:[
+        [Battery, function(self, timeRemaining) {
+            self.tooltipText = `${Battery.timeRemaining}`;
+
+        }],
+    ],
+      
+      child: Widget.Box({
+        children: [
+            Widget.Icon({
+                binds: [['icon', Battery, 'icon-name']],
+            }),
+          Widget.Label({
+            hpack: 'center',
+            connections:[
+                [Battery, function(self, percent) {
+                    self.label = `${Battery.percent}%`;
+                }]
+            ]
+          }),
+          /* Widget.CircularProgress({
+            style:
+                'min-width: 15px;' + // its size is min(min-height, min-width)
+                'min-height: 15px;' +
+                'font-size: 6px;' + // to set its thickness set font-size on it
+                'margin: 4px;' + // you can set margin on it
+                'background-color: #131313;' + // set its bg color
+                'color: aqua;', // set its fg color
+            connections: [[Battery, self => {
+                self.value = Battery.percent / 100;
+            }]],
+            rounded: false,
+            inverted: false,
+            startAt: 0.75,
+        }), */
+        ]
+      })
+    });
+  };
+
+
+const brightnessLevel = Variable('0', {
+    poll: [100, ['bash', '-c', 'brightnessctl | grep -oE \'[0-9]+%\'']],
+  });
+
+const brightnessLevelLabel = () => Widget.Label({
+    binds: [['label', brightnessLevel]],
+    hpack: 'center',
+})
+
+function sh(cmd) {
+    return function() {
+      Utils.execAsync(['bash', '-c', cmd]);
+    }; 
+  }
+
+const brightness = () => Widget.Button({
+    //onClicked: 'killall wvkbd-mobintl',
+    onScrollUp: sh('brightnessctl set +1%'),
+    onScrollDown: sh('brightnessctl set 1%-'),
+    className: 'backlight',
+    child: Widget.Box({
+        children: [
+            Widget.Label({
+                label: " ",
+            }),
+            brightnessLevelLabel()
+        ]
+
+    })
+})
+
 // layout of the bar
 const Left = () => Widget.Box({
     children: [
@@ -503,7 +553,7 @@ const Right = () => Widget.Box({
         networkIndicator(),
         BT(),
         batteryProgress(),
-        backlight(),
+        brightness(),
         kernel(),
         Clock(),
         Notification(),
