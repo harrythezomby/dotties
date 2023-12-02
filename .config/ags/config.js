@@ -306,7 +306,7 @@ const cpuutil = Variable('0', {
   });
 
 const cputemp = Variable('0', {
-    poll: [10000, ['bash', '-c', 'sensors | awk \'/CPUTIN/ {print $2}\' | sed \'s/+//\'']],
+    poll: [10000, ['bash', '-c', 'sensors | awk \'/Tctl/ {print $2}\' | sed \'s/+//\'']],
 });
 
 const cpufan = Variable('0', {
@@ -491,7 +491,7 @@ const batteryProgress = () => {
 
 
 const brightnessLevel = Variable('0', {
-    poll: [100, ['bash', '-c', 'brightnessctl | grep -oE \'[0-9]+%\'']],
+    poll: [5000, ['bash', '-c', 'brightnessctl | grep -oE \'[0-9]+%\'']],
   });
 
 const brightnessLevelLabel = () => Widget.Label({
@@ -531,7 +531,7 @@ const Left = () => Widget.Box({
         ramLabel(),
         cpuLabel(),
         tempLabel(),
-        fanLabel(),
+        //fanLabel(),
         
     ],
 });

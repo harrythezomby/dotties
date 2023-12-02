@@ -96,7 +96,7 @@ export default Widget.Window({
                     {
                         label: ' Log Out',
                         //icon: 'system-log-out',
-                        onClicked: sh('loginctl terminate-session ${XDG_SESSION_ID-}'),
+                        onClicked: sh('hyprctl dispatch exit'),
                     },
                 ],
             }),]
