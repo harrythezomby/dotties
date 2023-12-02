@@ -62,11 +62,11 @@ export default Widget.Window({
             }),
             VMMenu({
                 items: [
-                    {
+/*                     {
                         label: ' Close',
                         //icon: 'window-close',
                         onClicked: () =>  App.closeWindow('vmmenu'),
-                    },
+                    }, */
                     {
                         label: '󰐥 Power On',
                         //icon: 'system-shutdown',
@@ -76,6 +76,11 @@ export default Widget.Window({
                         label: ' View',
                         //icon: 'system-reboot',
                         onClicked: sh('virt-viewer -c qemu:///system "win11"'),
+                    },
+                    {
+                        label: '󱇽 Looking Glass',
+                        //icon: 'go-down',
+                        onClicked: sh('looking-glass-client'),
                     },
                     {
                         label: '󰚦 Shut Down',

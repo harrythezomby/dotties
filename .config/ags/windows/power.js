@@ -63,11 +63,11 @@ export default Widget.Window({
             }),
             PowerMenu({
                 items: [
-                    {
+/*                     {
                         label: ' Close',
                         //icon: 'window-close',
                         onClicked: () =>  App.closeWindow('powermenu'),
-                    },
+                    }, */
                     {
                         label: '󰐥 Shutdown',
                         //icon: 'system-shutdown',

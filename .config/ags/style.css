@@ -70,19 +70,20 @@ window > box {
 .apps:hover,
 .notibutton:hover,
 .vm:hover {
-    min-width: 50px;
+/*     min-width: 50px; */
     min-height: 10px;
-    text-shadow: 0 0 10px black;
-    border: 2px solid aqua;
-}
+    text-shadow: 0 0 10px grey;
+/*     border: 2px solid aqua;
+ */}
 
 .power:active,
 .apps:active,
+.notibutton:active,
 .vm:active {
-    min-width: 75px;
-    text-shadow: 0 0 10px black;
-    border: 2px solid aqua;
-}
+/*     min-width: 75px; */
+    text-shadow: 0 0 100px white;
+/*     border: 2px solid aqua;
+ */}
 
 .workspaces button {
     min-height: 5px;
@@ -95,7 +96,7 @@ window > box {
 
 .workspaces button:hover {
     background-color: rgba(0, 0, 0, 0.75);
-    min-width: 40px;
+/*     min-width: 40px; */
 }
 
 .workspaces button:active {
@@ -281,8 +282,8 @@ progress, highlight {
     min-width: 30px;
     min-height: 30px;
     margin-right: 10px;
-    border-radius: 100px;
-    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    background: transparent;
     border: 2px solid transparent;
     
 }
@@ -305,6 +306,8 @@ progress, highlight {
 .action-button:focus,
 .applauncherbuttons:hover,
 .applauncherbuttons:focus,
+.applauncherentries:focus,
+.applauncherentries:focus,
 .powermenuButtons:hover,
 .powermenuButtons:focus,
 .vmButtons:hover,
@@ -313,9 +316,12 @@ progress, highlight {
 
 /*     min-height: 4em;
     min-width: 4em; */
-    background: linear-gradient(rgba(255, 255, 255, 0.215), rgba(255, 255, 255, 0.205)) padding-box,
-              linear-gradient(to right, #6a11cb, #2575fc) border-box;
-
+/*     background: linear-gradient(rgba(255, 255, 255, 0.215), rgba(255, 255, 255, 0.205)) padding-box,
+              linear-gradient(to right, #6a11cb, #2575fc) border-box; */
+              
+        color: #005bea;
+        background: transparent;
+        border: 2px solid #005bea;
 }
 
 .notificationcenterclosebutton {
@@ -443,10 +449,11 @@ progress, highlight {
 .vmWindow,
 .applauncherwindow {
     border-radius: 30px;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)) padding-box,
-              linear-gradient(to right, rgba(0, 0, 139, 0.416), rgba(153, 50, 204, 0.416)) border-box;
+/*     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)) padding-box,
+              linear-gradient(to right, rgba(0, 0, 139, 0.416), rgba(153, 50, 204, 0.416)) border-box; */
+    background: rgba(14, 20, 22, 0.8);
     border-radius: 20px;
-    border: 4px solid transparent;
+    border: 4px solid #1970E0;
 }
 
 .applaunchersecondwindow {

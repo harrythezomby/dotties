@@ -149,7 +149,7 @@ const NotificationCenter = () => Widget.Window({
                         vertical: true,
                         homogeneous: false,
                         children: [
-                            Widget.Button({
+/*                             Widget.Button({
                                 className: 'notificationcenterclosebutton',
                                 hexpand: true,
                                 onClicked: () =>  App.toggleWindow('testing'),
@@ -157,7 +157,7 @@ const NotificationCenter = () => Widget.Window({
                                     className: 'smalltitle',
                                     label: ' Close'
                                 })
-                            }),
+                            }), */
                             Date(),
                         ]
                     }),

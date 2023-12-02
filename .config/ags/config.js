@@ -141,7 +141,7 @@ const Clock = () => Widget.Box({
         }),
         Widget.Label({
             connections: [
-                [1000, self => execAsync(['date', '+%l:%M:%S %p'])
+                [1000, self => execAsync(['date', '+%l:%M %p'])
                     .then(date => self.label = date).catch(console.error)],
             ],
         }),
@@ -231,7 +231,8 @@ const networkIndicator = () => Widget.Button({
             }),
             Widget.Label({
                 connections: [[Network, self => {
-                    self.label = Network.wifi?.ssid || '';
+                    const label = Network.wifi?.ssid || '';
+                    self.label = label.substring(0, 7)
                 }]],
             }),
         ],
@@ -314,7 +315,7 @@ const cpufan = Variable('0', {
 })
 
 const kernelver = Variable('0', {
-    poll:[999999, ['bash', '-c', 'uname -r']],
+    poll:[999999, ['bash', '-c', 'uname -r | cut -c -5']],
 })
 
   const cpughzLabel = () => Widget.Label({

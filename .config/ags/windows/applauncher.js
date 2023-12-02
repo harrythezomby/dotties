@@ -89,14 +89,14 @@ const Applauncher = ({ width, height, spacing }) => {
                         className: 'smalltitle',
                         label: '󰣇 Applications '
                     }),
-                    Widget.Button({
+/*                     Widget.Button({
                         className: 'applauncherclose',
                         onClicked: () =>  App.closeWindow('applauncher'),
                         child: Widget.Label({
                             className: 'smallertitle',
                             label: ' Close',
                         })
-                    }),
+                    }), */
             
                 ]
             }),
