@@ -8,21 +8,21 @@ label {
 .battery {
     padding: 0 6px;
     margin-right: 10px;
-    background-color: #caffbf;
+    background-color: #a9ff98;
     color: black;
 }
 
 .backlight {
     padding: 0 6px;
     margin-right: 10px;
-    background-color: #9bf6ff;
+    background-color: #6cf3ff;
     color: black;
 }
 
 .kernel {
     padding: 0 6px;
     margin-right: 10px;
-    background-color: #a0c4ff;
+    background-color: #79adff;
     color: black;
 }
 
@@ -147,7 +147,7 @@ window > box {
 .volume {
     padding: 0 6px;
     margin-right: 10px;
-    background-color: #ffadad;
+    background-color: #ff8b8b;
     color: black;
     
 }
@@ -155,14 +155,14 @@ window > box {
 .network {
     padding: 0 6px;
     margin-right: 10px;
-    background-color: #ffd6a5;
+    background-color: #ffc176;
     color: black;
 }
 
 .bluetooth {
     padding: 0 6px;
     margin-right: 10px;
-    background-color: #fdffb6;
+    background-color: #fbff84;
     color: black;
 }
 
@@ -171,7 +171,7 @@ window > box {
     margin-right: 10px;
     border-radius: 5px;
     color: white;
-    background-color: #bdb2ff;
+    background-color: #a08fff;
     color: black;
 }
 
@@ -435,7 +435,7 @@ progress, highlight {
 .notibutton {
     padding: 0 6px;
     padding-right: 9px;
-    background-color: #ffc6ff;
+    background-color: #ff95ff;
     
 }
 
